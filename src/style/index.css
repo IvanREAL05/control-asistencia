@@ -1,0 +1,8 @@
+/* Estilos globales para toda la página */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #e6f0fa; /* Mismo azul claro del login */
+  font-family: Arial, sans-serif;
+}
