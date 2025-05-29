@@ -39,6 +39,7 @@ const Panel = () => {
   const [asistencia, setAsistencia] = useState({});
   const [verMas, setVerMas] = useState(false);
   const [asientoSeleccionado, setAsientoSeleccionado] = useState(null);
+  const [alumnoModal, setAlumnoModal] = useState(null);
 
   const claseActual = clases.find(c => c.id === claseSeleccionada);
 
@@ -72,10 +73,9 @@ const Panel = () => {
   };
 
   const chartData = stats.clases.map(clase => ({
-    name: clase.id,
-    porcentaje: clase.porcentaje,
+    name: clase.nombre,
     presentes: clase.presentes,
-    total: clase.total
+    ausentes: clase.total - clase.presentes,
   }));
 
   const generarAsientos = (cantidad) => {
@@ -137,21 +137,28 @@ const Panel = () => {
 
         <div className="lista-alumnos">
           {alumnosVisibles.map(alumno => (
-            <div key={alumno.id} className="alumno-card">
-              <span>{alumno.nombre}</span>
-              <button
-                className={
-                  asistencia[alumno.id] === 'presente'
-                    ? "presente"
-                    : asistencia[alumno.id] === 'justificante'
-                    ? "justificante"
-                    : "ausente"
-                }
-                onClick={() => toggleAsistencia(alumno.id)}
+            <div
+                key={alumno.id}
+                className="alumno-card"
+                onClick={() => setAlumnoModal(alumno)}
               >
-                {asistencia[alumno.id] || "Marcar Presente"}
-              </button>
-            </div>
+                <span>{alumno.nombre}</span>
+                <button
+                  className={
+                    asistencia[alumno.id] === 'presente'
+                      ? "presente"
+                      : asistencia[alumno.id] === 'justificante'
+                      ? "justificante"
+                      : "ausente"
+                  }
+                  onClick={(e) => {
+                    e.stopPropagation(); // evita que se dispare el modal al hacer clic en el botón
+                    toggleAsistencia(alumno.id);
+                  }}
+                >
+                  {asistencia[alumno.id] || "Marcar Presente"}
+                </button>
+              </div>
           ))}
           {claseActual.alumnos.length > 5 && (
             <button className="ver-mas-btn" onClick={() => setVerMas(!verMas)}>
@@ -180,14 +187,14 @@ const Panel = () => {
       <div className="chart-card">
         <h2>Asistencia por Clase</h2>
         <ResponsiveContainer width="100%" height={300}>
-          <BarChart data={chartData}>
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Bar dataKey="porcentaje" fill="#8884d8" name="Porcentaje" />
-            <Bar dataKey="presentes" fill="#82ca9d" name="Presentes" />
-          </BarChart>
-        </ResponsiveContainer>
+        <BarChart data={chartData}>
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Bar dataKey="presentes" fill="green" name="Presentes" />
+          <Bar dataKey="ausentes" fill="red" name="Ausentes" />
+        </BarChart>
+      </ResponsiveContainer>
 
         {/* Mostrar alumno seleccionado */}
         {alumnoSeleccionado && (
@@ -230,6 +237,18 @@ const Panel = () => {
         ))}
       </div>
     </div>
+
+    {alumnoModal && (
+      <div className="modal-overlay" onClick={() => setAlumnoModal(null)}>
+        <div className="modal-contenido" onClick={e => e.stopPropagation()}>
+          <button className="cerrar-modal" onClick={() => setAlumnoModal(null)}>×</button>
+          <img src={alumnoModal.foto} alt={alumnoModal.nombre} />
+          <p><strong>Nombre:</strong> {alumnoModal.nombre}</p>
+          <p><strong>Matrícula:</strong> {alumnoModal.matricula}</p>
+          <p><strong>Correo:</strong> {alumnoModal.correo}</p>
+        </div>
+      </div>
+    )}
   </>
 );
 };
