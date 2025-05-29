@@ -1,248 +1,16 @@
-/* Estructura principal */
-.panel-container {
+/* Estilos generales */
+.panel-app {
+  font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
-  background-color: #ffffff;
-  color: #003366;
-  font-family: sans-serif;
 }
 
 h2, h3 {
   color: #003366;
 }
 
-/* Selector de clase */
-.selector-clase select {
-  padding: 6px 12px;
-  margin-bottom: 10px;
-  border: 1px solid #003366;
-  border-radius: 4px;
-}
-
-/* Control de Asistencia */
-.seccion-asistencia {
-  margin-bottom: 30px;
-}
-
-/* Lista de alumnos */
-.lista-alumnos {
-  max-height: 300px;
-  overflow-y: auto;
-  margin-top: 10px;
-  border: 1px solid #dcdcdc;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.alumno-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-  padding: 6px 10px;
-  border-bottom: 1px solid #eee;
-}
-
-.presente {
-  background-color: #4CAF50;
-  color: white;
-  padding: 4px 10px;
-  border: none;
-  border-radius: 4px;
-}
-
-.ausente {
-  background-color: #f44336;
-  color: white;
-  padding: 4px 10px;
-  border: none;
-  border-radius: 4px;
-}
-
-.ver-mas-btn {
-  margin-top: 10px;
-  background-color: #003366;
-  color: white;
-  padding: 6px 12px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-/* Estadísticas generales */
-.resumen-card, .chart-card, .asientos-card {
-  margin-top: 30px;
-  padding: 20px;
-  background-color: #f4faff;
-  border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
-
-.resumen-grid {
-  display: flex;
-  gap: 20px;
-}
-
-.metric-card {
-  background-color: white;
-  padding: 10px;
-  border-radius: 6px;
-  flex: 1;
-  box-shadow: 0 0 3px rgba(0,0,0,0.1);
-  text-align: center;
-}
-
-/* Gráfica */
-.chart-card {
-  position: relative;
-}
-
-/* Info alumno seleccionado */
-.info-alumno {
-  margin-top: 15px;
-  border-top: 1px solid #ccc;
-  padding-top: 10px;
-}
-
-.info-alumno img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 10px;
-}
-
-/* Mapa de Asientos estilo cine */
-.sala-cine {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.pantalla {
-  margin-bottom: 20px;
-  background-color: #003366;
-  color: white;
-  padding: 8px;
-  border-radius: 5px;
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto 20px auto;
-}
-
-.asientos-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-}
-
-.fila-asientos {
-  display: flex;
-  gap: 8px;
-}
-
-.asiento {
-  width: 30px;
-  height: 30px;
-  border-radius: 6px;
-  background-color: #b0c4de;
-  color: #003366;
-  font-size: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  user-select: none;
-  border: 1px solid #003366;
-  transition: transform 0.2s;
-}
-
-.asiento:hover {
-  transform: scale(1.1);
-}
-
-.asiento.ocupado {
-  background-color: #003366;
-  color: white;
-}
-
-.asiento.libre {
-  background-color: #dfefff;
-  color: #003366;
-}
-
-/* Leyenda */
-.leyenda {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 10px;
-}
-
-.leyenda .cuadro {
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  border-radius: 4px;
-  margin-right: 5px;
-}
-
-.cuadro.libre {
-  background-color: #dfefff;
-  border: 1px solid #003366;
-}
-
-.cuadro.ocupado {
-  background-color: #003366;
-}
-
-
-.asientos-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.fila-asientos {
-  display: flex;
-  gap: 10px;
-}
-
-.asiento {
-  width: 40px;
-  height: 40px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.verde {
-  background-color: #4caf50;
-  color: white;
-}
-
-.amarillo {
-  background-color: #ffeb3b;
-  color: black;
-}
-
-.rojo {
-  background-color: #f44336;
-  color: white;
-}
-
-.invisible {
-  visibility: hidden;
-}
-
-.alumno-card {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
-}
-
+/* Cabecera */
 .cabecera-panel {
   display: flex;
   justify-content: space-between;
@@ -250,6 +18,7 @@ h2, h3 {
   background-color: #003366;
   color: white;
   padding: 15px 30px;
+  margin-bottom: 20px;
   border-bottom: 4px solid #002244;
 }
 
@@ -273,6 +42,11 @@ h2, h3 {
   font-weight: 500;
 }
 
+.fecha-hora p {
+  margin: 2px 0;
+  font-size: 0.9rem;
+}
+
 .btn-salir {
   background-color: #f44336;
   border: none;
@@ -288,23 +62,257 @@ h2, h3 {
   background-color: #d32f2f;
 }
 
+/* Contenedor principal */
+.panel-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Sección de asistencia */
+.seccion-asistencia {
+  grid-column: span 2;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.clase-selector {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.selector-clase select {
+  padding: 6px 12px;
+  border: 1px solid #003366;
+  border-radius: 4px;
+}
+
+.btn-excel {
+  background-color: #1e8449;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-excel:hover {
+  background-color: #186a3b;
+}
+
+.info-reporte {
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.info-reporte p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+/* Estadísticas de clase */
+.estadisticas-clase {
+  display: flex;
+  gap: 20px;
+  margin: 15px 0;
+}
+
+.estadisticas-numeros {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.estadisticas-numeros p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+.estadisticas-numeros strong {
+  font-weight: bold;
+}
+
+.estadisticas-grafico {
+  flex: 1;
+  min-height: 150px;
+}
+
+/* Lista de alumnos */
+.lista-alumnos {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 10px;
+  border: 1px solid #dcdcdc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.alumno-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin: 5px 0;
+  background: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.ver-mas-btn {
+  margin-top: 10px;
+  background-color: #003366;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Estados de asistencia */
+.presente {
+  background-color: #4CAF50;
+  color: white;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 4px;
+}
+
+.justificante {
+  background-color: #FFC107;
+  color: black;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 4px;
+}
+
+.ausente {
+  background-color: #F44336;
+  color: white;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 4px;
+}
+
+/* Resumen general */
+.resumen-card {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f4faff;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.resumen-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.metric-card {
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.metric-card h3 {
+  margin-top: 0;
+  color: #555;
+}
+
+.metric-card p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 10px 0 0;
+}
+
+.resumen-grafico {
+  grid-column: span 2;
+  height: 200px;
+}
+
+/* Gráfica de asistencias */
+.chart-card {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f4faff;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+/* Mapa de asientos */
+.asientos-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.fila-asientos {
+  display: flex;
+  gap: 8px;
+}
+
+.asiento {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid #003366;
+  transition: transform 0.2s;
+}
+
+.asiento:hover {
+  transform: scale(1.1);
+}
+
+.asiento.verde {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.asiento.amarillo {
+  background-color: #FFC107;
+  color: black;
+}
+
+.asiento.rojo {
+  background-color: #F44336;
+  color: white;
+}
+
+.asiento.invisible {
+  visibility: hidden;
+}
+
+/* Modal */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   z-index: 1000;
 }
 
 .modal-contenido {
   background: white;
   padding: 20px;
-  border-radius: 12px;
+  border-radius: 8px;
   max-width: 400px;
   width: 90%;
   position: relative;
@@ -313,7 +321,9 @@ h2, h3 {
 
 .modal-contenido img {
   width: 100px;
+  height: 100px;
   border-radius: 50%;
+  object-fit: cover;
   margin-bottom: 10px;
 }
 
@@ -325,4 +335,82 @@ h2, h3 {
   border: none;
   font-size: 24px;
   cursor: pointer;
+}
+
+.estado-asistencia {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+/* Contenedor de asientos */
+.asientos-container {
+  grid-column: span 2;
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f4faff;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+/* Mapa de asientos */
+.asientos-grid {
+  flex: 1;
+}
+
+.pantalla {
+  background-color: #003366;
+  color: white;
+  padding: 8px;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Información del alumno */
+.info-alumno-asiento {
+  flex: 1;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.info-alumno-asiento img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 15px auto;
+  display: block;
+  border: 3px solid #003366;
+}
+
+.info-alumno-asiento h3 {
+  color: #003366;
+  margin-top: 0;
+  text-align: center;
+}
+
+.info-alumno-asiento p {
+  margin: 8px 0;
+}
+
+.estado-asistencia {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+.estado-asistencia button {
+  margin-top: 10px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
 }
