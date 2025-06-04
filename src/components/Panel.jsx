@@ -14,12 +14,34 @@ import {
 import * as XLSX from "xlsx";
 import "./Panel.css";
 
+// Datos de grupos
+const grupos = [
+  { id: '1a', nombre: '1A', turno: 'matutino' },
+  { id: '1b', nombre: '1B', turno: 'matutino' },
+  { id: '1c', nombre: '1C', turno: 'matutino' },
+  { id: '1d', nombre: '1D', turno: 'matutino' },
+  { id: '1e', nombre: '1E', turno: 'matutino' },
+  { id: '2a', nombre: '2A', turno: 'matutino' },
+  { id: '2b', nombre: '2B', turno: 'matutino' },
+  { id: '2c', nombre: '2C', turno: 'matutino' },
+  { id: '2d', nombre: '2D', turno: 'matutino' },
+  { id: '2e', nombre: '2E', turno: 'matutino' },
+  { id: '3a', nombre: '3A', turno: 'matutino' },
+  { id: '3b', nombre: '3B', turno: 'matutino' },
+  { id: '3c', nombre: '3C', turno: 'matutino' },
+  { id: '3d', nombre: '3D', turno: 'matutino' },
+  { id: '3e', nombre: '3E', turno: 'matutino' },
+];
+// Datos de clases
 const clases = [
   {
     id: 101,
-    nombre: "Matemáticas 101",
+    nombre: "Matemáticas",
+    grupo: "1a",
+    horario: "7:20 - 8:50",
+    turno: "matutino",
     alumnos: Array.from({ length: 30 }, (_, i) => ({
-      id: i + 1,
+      id: `1a-${i+1}`,
       nombre: `Alumno ${i + 1}`,
       apellido: `Apellido ${i + 1}`,
       correo: `alumno${i + 1}@example.com`,
@@ -29,9 +51,12 @@ const clases = [
   },
   {
     id: 102,
-    nombre: "Historia 102",
-    alumnos: Array.from({ length: 5 }, (_, i) => ({
-      id: 31 + i,
+    nombre: "Historia",
+    grupo: "1b",
+    horario: "7:20 - 8:50",
+    turno: "matutino",
+    alumnos: Array.from({ length: 25 }, (_, i) => ({
+      id: `1b-${i+1}`,
       nombre: `Alumno B${i + 1}`,
       apellido: `Apellido B${i + 1}`,
       correo: `alumnob${i + 1}@example.com`,
@@ -39,6 +64,28 @@ const clases = [
       foto: "https://via.placeholder.com/100",
     })),
   },
+  {
+    id: 103,
+    nombre: "Física",
+    grupo: "2a",
+    horario: "9:20 - 10:50",
+    turno: "matutino",
+    alumnos: Array.from({ length: 28 }, (_, i) => ({
+      id: `2a-${i+1}`,
+      nombre: `Alumno C${i + 1}`,
+      apellido: `Apellido C${i + 1}`,
+      correo: `alumnoc${i + 1}@example.com`,
+      matricula: `C${String(i + 1).padStart(3, '0')}`,
+      foto: "https://via.placeholder.com/100",
+    })),
+  },
+  // Más clases para otros grupos y horarios...
+];
+const horariosMatutinos = [
+  { id: 1, hora: "7:20 - 8:50", nombre: "1ra Hora" },
+  { id: 2, hora: "9:20 - 10:50", nombre: "2da Hora" },
+  { id: 3, hora: "11:20 - 12:50", nombre: "3ra Hora" },
+  { id: 4, hora: "13:20 - 14:50", nombre: "4ta Hora" },
 ];
 
 const COLORS = {
@@ -54,6 +101,8 @@ const Panel = () => {
   const [asientoSeleccionado, setAsientoSeleccionado] = useState(null);
   const [alumnoModal, setAlumnoModal] = useState(null);
   const [fechaHoraActual, setFechaHoraActual] = useState(new Date());
+  const [mostrarTodasClases, setMostrarTodasClases] = useState(false);
+  const [horaSeleccionada, setHoraSeleccionada] = useState(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -136,6 +185,192 @@ const Panel = () => {
     );
   };
 
+  // Funciones para la vista de todas las clases
+  const obtenerGruposPorHorario = (horaId) => {
+    const horario = horariosMatutinos.find(h => h.id === horaId);
+    const clasesEnHorario = clases.filter(c => c.horario === horario.hora);
+    const gruposIds = [...new Set(clasesEnHorario.map(c => c.grupo))];
+    
+    return gruposIds.map(grupoId => {
+      const grupo = grupos.find(g => g.id === grupoId);
+      const clasesDelGrupo = clasesEnHorario.filter(c => c.grupo === grupoId);
+      
+      // Calcular estadísticas del grupo
+      let totalAlumnos = 0;
+      let presentes = 0;
+      let ausentes = 0;
+      let justificantes = 0;
+      
+      clasesDelGrupo.forEach(clase => {
+        totalAlumnos += clase.alumnos.length;
+        presentes += clase.alumnos.filter(a => asistencia[a.id] === 'presente').length;
+        justificantes += clase.alumnos.filter(a => asistencia[a.id] === 'justificante').length;
+        ausentes += clase.alumnos.length - 
+          clase.alumnos.filter(a => asistencia[a.id] === 'presente').length - 
+          clase.alumnos.filter(a => asistencia[a.id] === 'justificante').length;
+      });
+      
+      const porcentajeAsistencia = totalAlumnos > 0 ? 
+        Math.round((presentes / totalAlumnos) * 100) : 0;
+      
+      return {
+        ...grupo,
+        clases: clasesDelGrupo,
+        estadisticas: {
+          totalAlumnos,
+          presentes,
+          ausentes,
+          justificantes,
+          porcentajeAsistencia
+        }
+      };
+    });
+  };
+
+  if (mostrarTodasClases) {
+    return (
+      <div className="panel-app">
+        <div className="cabecera-panel">
+          <div className="logo-nombre">
+            <img src="/logo.png" alt="Logo Institución" className="logo" />
+            <h1>Preparatoria Lázaro Cárdenas</h1>
+          </div>
+          <div className="bienvenida">
+            <div className="fecha-hora">
+              <p>{fechaHoraActual.toLocaleDateString('es-MX', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}</p>
+              <p>{fechaHoraActual.toLocaleTimeString('es-MX', {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+              })}</p>
+            </div>
+            <button className="btn-volver" onClick={() => {
+              setMostrarTodasClases(false);
+              setHoraSeleccionada(null);
+            }}>
+              Volver al panel principal
+            </button>
+          </div>
+        </div>
+
+        <div className="todas-clases-container">
+          <h2>Asistencia por Horario - Turno Matutino</h2>
+          
+          {!horaSeleccionada ? (
+            <div className="horarios-grid">
+              {horariosMatutinos.map(horario => (
+                <div 
+                  key={horario.id} 
+                  className="horario-card"
+                  onClick={() => setHoraSeleccionada(horario.id)}
+                >
+                  <h3>{horario.nombre}</h3>
+                  <p>{horario.hora}</p>
+                  <p>
+                    {[...new Set(clases.filter(c => c.horario === horario.hora).map(c => c.grupo))].length} 
+                    grupos
+                  </p>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="grupos-por-hora">
+              <button className="btn-volver-horarios" onClick={() => setHoraSeleccionada(null)}>
+                ← Volver a horarios
+              </button>
+              
+              <h3>
+                {horariosMatutinos.find(h => h.id === horaSeleccionada).nombre} - 
+                {horariosMatutinos.find(h => h.id === horaSeleccionada).hora}
+              </h3>
+              
+              <div className="grupos-grid">
+                {obtenerGruposPorHorario(horaSeleccionada).map(grupo => (
+                  <div key={grupo.id} className="grupo-card">
+                    <h4>{grupo.nombre}</h4>
+                    
+                    <div className="grupo-stats">
+                      <div className="stat-item">
+                        <span className="stat-label">Total:</span>
+                        <span className="stat-value">{grupo.estadisticas.totalAlumnos}</span>
+                      </div>
+                      <div className="stat-item">
+                        <span className="stat-label">Presentes:</span>
+                        <span className="stat-value" style={{color: COLORS.presente}}>
+                          {grupo.estadisticas.presentes}
+                        </span>
+                      </div>
+                      <div className="stat-item">
+                        <span className="stat-label">Justificantes:</span>
+                        <span className="stat-value" style={{color: COLORS.justificante}}>
+                          {grupo.estadisticas.justificantes}
+                        </span>
+                      </div>
+                      <div className="stat-item">
+                        <span className="stat-label">Ausentes:</span>
+                        <span className="stat-value" style={{color: COLORS.ausente}}>
+                          {grupo.estadisticas.ausentes}
+                        </span>
+                      </div>
+                      <div className="stat-item">
+                        <span className="stat-label">Asistencia:</span>
+                        <span className="stat-value">
+                          {grupo.estadisticas.porcentajeAsistencia}%
+                        </span>
+                      </div>
+                    </div>
+                    
+                    <div className="grupo-chart">
+                      <ResponsiveContainer width="100%" height={150}>
+                        <PieChart>
+                          <Pie
+                            data={[
+                              { name: 'Presentes', value: grupo.estadisticas.presentes, color: COLORS.presente },
+                              { name: 'Justificantes', value: grupo.estadisticas.justificantes, color: COLORS.justificante },
+                              { name: 'Ausentes', value: grupo.estadisticas.ausentes, color: COLORS.ausente },
+                            ]}
+                            cx="50%"
+                            cy="50%"
+                            innerRadius={40}
+                            outerRadius={60}
+                            paddingAngle={2}
+                            dataKey="value"
+                            label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                          >
+                            <Cell key="presente" fill={COLORS.presente} />
+                            <Cell key="justificante" fill={COLORS.justificante} />
+                            <Cell key="ausente" fill={COLORS.ausente} />
+                          </Pie>
+                          <Tooltip />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </div>
+                    
+                    <div className="grupo-clases">
+                      <h5>Clases en este horario:</h5>
+                      <ul>
+                        {grupo.clases.map(clase => (
+                          <li key={clase.id}>
+                            {clase.nombre} - {clase.alumnos.length} alumnos
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   const asientos = generarAsientos(claseActual.alumnos.length);
   const alumnoSeleccionado = asientoSeleccionado ? claseActual.alumnos.find(a => a.id === asientoSeleccionado) : null;
 
@@ -207,11 +442,14 @@ const Panel = () => {
               onChange={e => setClaseSeleccionada(parseInt(e.target.value))}
             >
               {clases.map(c => (
-                <option key={c.id} value={c.id}>{c.nombre}</option>
+                <option key={c.id} value={c.id}>{c.nombre} - {c.grupo}</option>
               ))}
             </select>
             <button className="btn-excel" onClick={generarReporteExcel}>
               Exportar a Excel
+            </button>
+            <button className="btn-todas-clases" onClick={() => setMostrarTodasClases(true)}>
+              Ver todas las clases
             </button>
           </div>
 
@@ -326,7 +564,7 @@ const Panel = () => {
 
         <div className="asientos-container">
           <div className="asientos-grid">
-            <div className="pantalla">Pantalla</div>
+            <div className="pantalla">Mapa de Asientos</div>
             {asientos.map((fila, i) => (
               <div key={i} className="fila-asientos">
                 {fila.map((asiento, j) =>
