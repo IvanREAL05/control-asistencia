@@ -624,4 +624,249 @@ h2, h3 {
 }
 
 
+/*Nueva configuracion de clases */ 
+/* Estilos para la visualización de grupos y clases */
+.grado-container {
+  margin-bottom: 2rem;
+}
 
+.grado-titulo {
+  color: #333;
+  font-size: 1.3rem;
+  margin: 1.5rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #eee;
+}
+
+.grupos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.grupo-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.grupo-card:hover {
+  transform: translateY(-2px);
+}
+
+.grupo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.grupo-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #2c3e50;
+}
+
+.asistencia-porcentaje {
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+}
+
+.asistencia-porcentaje.alta {
+  color: #4CAF50;
+  background-color: #E8F5E9;
+}
+
+.asistencia-porcentaje.media {
+  color: #FFC107;
+  background-color: #FFF8E1;
+}
+
+.asistencia-porcentaje.baja {
+  color: #F44336;
+  background-color: #FFEBEE;
+}
+
+.grupo-stats-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.grupo-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stat-label {
+  font-weight: 500;
+  color: #555;
+}
+
+.stat-value {
+  font-weight: 600;
+}
+
+.stat-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.stat-dot.presente {
+  background-color: #4CAF50;
+}
+
+.stat-dot.justificante {
+  background-color: #FFC107;
+}
+
+.stat-dot.ausente {
+  background-color: #F44336;
+}
+
+.grupo-chart-mini {
+  min-width: 100px;
+}
+
+.grupo-clases-collapsible details {
+  margin-top: 1rem;
+}
+
+.grupo-clases-collapsible summary {
+  cursor: pointer;
+  color: #1976D2;
+  font-weight: 500;
+  padding: 0.5rem;
+  border-radius: 4px;
+  background-color: #E3F2FD;
+  list-style: none;
+}
+
+.grupo-clases-collapsible summary:hover {
+  background-color: #BBDEFB;
+}
+
+.grupo-clases-collapsible summary::-webkit-details-marker {
+  display: none;
+}
+
+.grupo-clases-collapsible summary:before {
+  content: "►";
+  display: inline-block;
+  margin-right: 0.5rem;
+  font-size: 0.8rem;
+  transition: transform 0.2s;
+}
+
+.grupo-clases-collapsible details[open] summary:before {
+  transform: rotate(90deg);
+}
+
+.clases-list {
+  margin-top: 0.8rem;
+  padding-left: 0;
+  list-style: none;
+  border-top: 1px solid #eee;
+  padding-top: 0.8rem;
+}
+
+.clases-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.clase-nombre {
+  color: #333;
+}
+
+.clase-alumnos {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+
+/* estilo de paginacion */ 
+
+/* Estilos para la paginación */
+.paginacion-grados {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+  gap: 0.5rem;
+}
+
+.paginacion-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #e0e0e0;
+  color: #333;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.paginacion-btn:hover {
+  background-color: #bdbdbd;
+}
+
+.paginacion-btn.activo {
+  background-color: #1976D2;
+  color: white;
+}
+
+.controles-superiores {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sin-datos {
+  text-align: center;
+  color: #666;
+  padding: 2rem;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+/* Estilos para el botón de ver clases */
+.btn-ver-clases {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  background-color: #E3F2FD;
+  border: none;
+  border-radius: 4px;
+  color: #1976D2;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-ver-clases:hover {
+  background-color: #BBDEFB;
+}
+
+/* Estilos para la lista de clases */
+.grupo-clases {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}

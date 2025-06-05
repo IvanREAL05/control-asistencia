@@ -36,11 +36,12 @@ const grupos = [
 ];
 // Datos de clases
 const clases = [
+  // Primer año (1°)
   {
     id: 201,
     nombre: "Matemáticas",
     grupo: "1a",
-    horario: "7:20 - 8:50",
+    horario: "7:20 - 8:05",
     turno: "matutino",
     alumnos: Array.from({ length: 30 }, (_, i) => ({
       id: `1a-${i+1}`,
@@ -55,7 +56,7 @@ const clases = [
     id: 202,
     nombre: "Historia",
     grupo: "1b",
-    horario: "7:20 - 8:50",
+    horario: "7:20 - 8:05",
     turno: "matutino",
     alumnos: Array.from({ length: 28 }, (_, i) => ({
       id: `1b-${i+1}`,
@@ -70,7 +71,7 @@ const clases = [
     id: 203,
     nombre: "Biología",
     grupo: "1c",
-    horario: "7:20 - 8:50",
+    horario: "7:20 - 8:05",
     turno: "matutino",
     alumnos: Array.from({ length: 27 }, (_, i) => ({
       id: `1c-${i+1}`,
@@ -85,7 +86,7 @@ const clases = [
     id: 204,
     nombre: "Física",
     grupo: "1d",
-    horario: "7:20 - 8:50",
+    horario: "7:20 - 8:05",
     turno: "matutino",
     alumnos: Array.from({ length: 25 }, (_, i) => ({
       id: `1d-${i+1}`,
@@ -100,7 +101,7 @@ const clases = [
     id: 205,
     nombre: "Lectura y Redacción",
     grupo: "1e",
-    horario: "7:20 - 8:50",
+    horario: "7:20 - 8:05",
     turno: "matutino",
     alumnos: Array.from({ length: 26 }, (_, i) => ({
       id: `1e-${i+1}`,
@@ -115,7 +116,7 @@ const clases = [
     id: 206,
     nombre: "Geografía",
     grupo: "1f",
-    horario: "7:20 - 8:50",
+    horario: "7:20 - 8:05",
     turno: "matutino",
     alumnos: Array.from({ length: 29 }, (_, i) => ({
       id: `1f-${i+1}`,
@@ -126,15 +127,199 @@ const clases = [
       foto: "https://via.placeholder.com/100",
     })),
   },
+
+  // Segundo año (2°)
+  {
+    id: 207,
+    nombre: "Álgebra",
+    grupo: "2a",
+    horario: "7:20 - 8:05",
+    turno: "matutino",
+    alumnos: Array.from({ length: 28 }, (_, i) => ({
+      id: `2a-${i+1}`,
+      nombre: `Alumno G${i + 1}`,
+      apellido: `Apellido G${i + 1}`,
+      correo: `2a-alumno${i + 1}@example.com`,
+      matricula: `G${String(i + 1).padStart(3, '0')}`,
+      foto: "https://via.placeholder.com/100",
+    })),
+  },
+  {
+    id: 208,
+    nombre: "Historia Universal",
+    grupo: "2b",
+    horario: "7:20 - 8:05",
+    turno: "matutino",
+    alumnos: Array.from({ length: 26 }, (_, i) => ({
+      id: `2b-${i+1}`,
+      nombre: `Alumno H${i + 1}`,
+      apellido: `Apellido H${i + 1}`,
+      correo: `2b-alumno${i + 1}@example.com`,
+      matricula: `H${String(i + 1).padStart(3, '0')}`,
+      foto: "https://via.placeholder.com/100",
+    })),
+  },
+  {
+    id: 209,
+    nombre: "Química",
+    grupo: "2c",
+    horario: "7:20 - 8:05",
+    turno: "matutino",
+    alumnos: Array.from({ length: 27 }, (_, i) => ({
+      id: `2c-${i+1}`,
+      nombre: `Alumno I${i + 1}`,
+      apellido: `Apellido I${i + 1}`,
+      correo: `2c-alumno${i + 1}@example.com`,
+      matricula: `I${String(i + 1).padStart(3, '0')}`,
+      foto: "https://via.placeholder.com/100",
+    })),
+  },
+  {
+    id: 210,
+    nombre: "Literatura",
+    grupo: "2d",
+    horario: "7:20 - 8:05",
+    turno: "matutino",
+    alumnos: Array.from({ length: 25 }, (_, i) => ({
+      id: `2d-${i+1}`,
+      nombre: `Alumno J${i + 1}`,
+      apellido: `Apellido J${i + 1}`,
+      correo: `2d-alumno${i + 1}@example.com`,
+      matricula: `J${String(i + 1).padStart(3, '0')}`,
+      foto: "https://via.placeholder.com/100",
+    })),
+  },
+  {
+    id: 211,
+    nombre: "Inglés Intermedio",
+    grupo: "2e",
+    horario: "7:20 - 8:05",
+    turno: "matutino",
+    alumnos: Array.from({ length: 24 }, (_, i) => ({
+      id: `2e-${i+1}`,
+      nombre: `Alumno K${i + 1}`,
+      apellido: `Apellido K${i + 1}`,
+      correo: `2e-alumno${i + 1}@example.com`,
+      matricula: `K${String(i + 1).padStart(3, '0')}`,
+      foto: "https://via.placeholder.com/100",
+    })),
+  },
+  {
+    id: 212,
+    nombre: "Informática",
+    grupo: "2f",
+    horario: "7:20 - 8:05",
+    turno: "matutino",
+    alumnos: Array.from({ length: 30 }, (_, i) => ({
+      id: `2f-${i+1}`,
+      nombre: `Alumno L${i + 1}`,
+      apellido: `Apellido L${i + 1}`,
+      correo: `2f-alumno${i + 1}@example.com`,
+      matricula: `L${String(i + 1).padStart(3, '0')}`,
+      foto: "https://via.placeholder.com/100",
+    })),
+  },
+
+  // Tercer año (3°)
+  {
+    id: 213,
+    nombre: "Cálculo Diferencial",
+    grupo: "3a",
+    horario: "7:20 - 8:05",
+    turno: "matutino",
+    alumnos: Array.from({ length: 26 }, (_, i) => ({
+      id: `3a-${i+1}`,
+      nombre: `Alumno M${i + 1}`,
+      apellido: `Apellido M${i + 1}`,
+      correo: `3a-alumno${i + 1}@example.com`,
+      matricula: `M${String(i + 1).padStart(3, '0')}`,
+      foto: "https://via.placeholder.com/100",
+    })),
+  },
+  {
+    id: 214,
+    nombre: "Historia de México",
+    grupo: "3b",
+    horario: "7:20 - 8:05",
+    turno: "matutino",
+    alumnos: Array.from({ length: 27 }, (_, i) => ({
+      id: `3b-${i+1}`,
+      nombre: `Alumno N${i + 1}`,
+      apellido: `Apellido N${i + 1}`,
+      correo: `3b-alumno${i + 1}@example.com`,
+      matricula: `N${String(i + 1).padStart(3, '0')}`,
+      foto: "https://via.placeholder.com/100",
+    })),
+  },
+  {
+    id: 215,
+    nombre: "Física Avanzada",
+    grupo: "3c",
+    horario: "7:20 - 8:05",
+    turno: "matutino",
+    alumnos: Array.from({ length: 25 }, (_, i) => ({
+      id: `3c-${i+1}`,
+      nombre: `Alumno O${i + 1}`,
+      apellido: `Apellido O${i + 1}`,
+      correo: `3c-alumno${i + 1}@example.com`,
+      matricula: `O${String(i + 1).padStart(3, '0')}`,
+      foto: "https://via.placeholder.com/100",
+    })),
+  },
+  {
+    id: 216,
+    nombre: "Literatura Universal",
+    grupo: "3d",
+    horario: "7:20 - 8:05",
+    turno: "matutino",
+    alumnos: Array.from({ length: 24 }, (_, i) => ({
+      id: `3d-${i+1}`,
+      nombre: `Alumno P${i + 1}`,
+      apellido: `Apellido P${i + 1}`,
+      correo: `3d-alumno${i + 1}@example.com`,
+      matricula: `P${String(i + 1).padStart(3, '0')}`,
+      foto: "https://via.placeholder.com/100",
+    })),
+  },
+  {
+    id: 217,
+    nombre: "Inglés Avanzado",
+    grupo: "3e",
+    horario: "7:20 - 8:05",
+    turno: "matutino",
+    alumnos: Array.from({ length: 23 }, (_, i) => ({
+      id: `3e-${i+1}`,
+      nombre: `Alumno Q${i + 1}`,
+      apellido: `Apellido Q${i + 1}`,
+      correo: `3e-alumno${i + 1}@example.com`,
+      matricula: `Q${String(i + 1).padStart(3, '0')}`,
+      foto: "https://via.placeholder.com/100",
+    })),
+  },
+  {
+    id: 218,
+    nombre: "Programación",
+    grupo: "3f",
+    horario: "7:20 - 8:05",
+    turno: "matutino",
+    alumnos: Array.from({ length: 28 }, (_, i) => ({
+      id: `3f-${i+1}`,
+      nombre: `Alumno R${i + 1}`,
+      apellido: `Apellido R${i + 1}`,
+      correo: `3f-alumno${i + 1}@example.com`,
+      matricula: `R${String(i + 1).padStart(3, '0')}`,
+      foto: "https://via.placeholder.com/100",
+    })),
+  }
 ];
 const horariosMatutinos = [
-  { id: 1, hora: "7:20 - 8:05", nombre: "Hora 1" },
-  { id: 2, hora: "8:05 - 8:50", nombre: "Hora 2" },
-  { id: 3, hora: "8:50 - 9:35", nombre: "Hora 3" },
-  { id: 4, hora: "9:35 - 10:20", nombre: "Hora 4" },
-  { id: 5, hora: "10:50 - 11:35", nombre: "Hora 5" },
-  { id: 6, hora: "11:35 - 12:20", nombre: "Hora 6" },
-  { id: 7, hora: "12:20 - 13:05", nombre: "Hora 7" },
+  { id: 1, hora: "7:20 - 8:05", nombre: "Bloque 1" },
+  { id: 2, hora: "8:05 - 8:50", nombre: "Bloque 2" },
+  { id: 3, hora: "8:50 - 9:35", nombre: "Bloque 3" },
+  { id: 4, hora: "9:35 - 10:20", nombre: "Bloque 4" },
+  { id: 5, hora: "10:50 - 11:35", nombre: "Bloque 5" },
+  { id: 6, hora: "11:35 - 12:20", nombre: "Bloque 6" },
+  { id: 7, hora: "12:20 - 13:05", nombre: "Bloque 7" },
 ];
 
 const COLORS = {
@@ -180,6 +365,9 @@ const Panel = () => {
   const justificantesClase = claseActual.alumnos.filter(a => asistencia[a.id] === 'justificante').length;
   const ausentesClase = totalAlumnosClase - presentesClase - justificantesClase;
   const porcentajeAsistencia = Math.round((presentesClase / totalAlumnosClase) * 100);
+  const [paginaActual, setPaginaActual] = useState(0);
+  const grados = ['1', '2', '3'];
+  const gradoActual = grados[paginaActual];
 
   const formatoFecha = {
     weekday: 'long',
@@ -242,28 +430,29 @@ const Panel = () => {
     
     return gruposIds.map(grupoId => {
       const grupo = grupos.find(g => g.id === grupoId);
+      if (!grupo) return null;
+
       const clasesDelGrupo = clasesEnHorario.filter(c => c.grupo === grupoId);
       
-      // Calcular estadísticas del grupo
-      let totalAlumnos = 0;
-      let presentes = 0;
-      let ausentes = 0;
-      let justificantes = 0;
+      let totalAlumnos = 0, presentes = 0, ausentes = 0, justificantes = 0;
       
       clasesDelGrupo.forEach(clase => {
         totalAlumnos += clase.alumnos.length;
-        presentes += clase.alumnos.filter(a => asistencia[a.id] === 'presente').length;
-        justificantes += clase.alumnos.filter(a => asistencia[a.id] === 'justificante').length;
-        ausentes += clase.alumnos.length - 
-          clase.alumnos.filter(a => asistencia[a.id] === 'presente').length - 
-          clase.alumnos.filter(a => asistencia[a.id] === 'justificante').length;
+        clase.alumnos.forEach(alumno => {
+          const estado = asistencia[alumno.id];
+          if (estado === 'presente') presentes++;
+          else if (estado === 'justificante') justificantes++;
+          else ausentes++;
+        });
       });
-      
-      const porcentajeAsistencia = totalAlumnos > 0 ? 
-        Math.round((presentes / totalAlumnos) * 100) : 0;
-      
+
+      const porcentajeAsistencia = totalAlumnos > 0
+        ? Math.round((presentes / totalAlumnos) * 100)
+        : 0;
+
       return {
         ...grupo,
+        nombreHorario: horario.hora,
         clases: clasesDelGrupo,
         estadisticas: {
           totalAlumnos,
@@ -273,12 +462,103 @@ const Panel = () => {
           porcentajeAsistencia
         }
       };
-    });
+    }).filter(Boolean);
   };
 
-  if (mostrarTodasClases) {
-    return (
-      <div className="panel-app">
+  const GrupoCard = ({ grupo, onVerClases }) => {
+  const [mostrarClases, setMostrarClases] = useState(false);
+
+  return (
+    <div className="grupo-card">
+      <div className="grupo-header">
+        <h4>{grupo.nombre}</h4>
+        <span className={`asistencia-porcentaje ${
+          grupo.estadisticas.porcentajeAsistencia >= 90 ? 'alta' :
+          grupo.estadisticas.porcentajeAsistencia >= 70 ? 'media' : 'baja'
+        }`}>
+          {grupo.estadisticas.porcentajeAsistencia}%
+        </span>
+      </div>
+      
+      <div className="grupo-stats-container">
+        <div className="grupo-stats">
+          <div className="stat-item">
+            <span className="stat-label">Total:</span>
+            <span className="stat-value">{grupo.estadisticas.totalAlumnos}</span>
+          </div>
+          <div className="stat-item">
+            <span className="stat-dot presente"></span>
+            <span className="stat-value">{grupo.estadisticas.presentes}</span>
+          </div>
+          <div className="stat-item">
+            <span className="stat-dot justificante"></span>
+            <span className="stat-value">{grupo.estadisticas.justificantes}</span>
+          </div>
+          <div className="stat-item">
+            <span className="stat-dot ausente"></span>
+            <span className="stat-value">{grupo.estadisticas.ausentes}</span>
+          </div>
+        </div>
+        
+        <div className="grupo-chart-mini">
+          <ResponsiveContainer width={100} height={100}>
+            <PieChart>
+              <Pie
+                data={[
+                  { name: 'Presentes', value: grupo.estadisticas.presentes },
+                  { name: 'Justificantes', value: grupo.estadisticas.justificantes },
+                  { name: 'Ausentes', value: grupo.estadisticas.ausentes },
+                ]}
+                cx="50%"
+                cy="50%"
+                innerRadius={30}
+                outerRadius={45}
+                paddingAngle={2}
+                dataKey="value"
+              >
+                <Cell fill="#4CAF50" />
+                <Cell fill="#FFC107" />
+                <Cell fill="#F44336" />
+              </Pie>
+              <Tooltip formatter={(value, name) => [`${value} ${name}`, '']} />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+      
+      <button 
+        className="btn-ver-clases"
+        onClick={() => setMostrarClases(!mostrarClases)}
+      >
+        {mostrarClases ? 'Ocultar clases' : `Ver ${grupo.clases.length} clase${grupo.clases.length !== 1 ? 's' : ''}`}
+      </button>
+      
+      {mostrarClases && (
+        <div className="grupo-clases">
+          <ul className="clases-list">
+            {grupo.clases.map(clase => (
+              <li key={clase.id}>
+                <span className="clase-nombre">{clase.nombre}</span>
+                <span className="clase-alumnos">
+                  {clase.alumnos.length} alumno{clase.alumnos.length !== 1 ? 's' : ''}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+};
+
+
+/* falta un componente */ 
+
+
+if (mostrarTodasClases) {
+
+  return (
+    <div className="panel-app">
         <div className="cabecera-panel">
           <div className="logo-nombre">
             <img src="/logo.png" alt="Logo Institución" className="logo" />
@@ -307,118 +587,85 @@ const Panel = () => {
           </div>
         </div>
 
-        <div className="todas-clases-container">
-          <h2>Asistencia por Horario - Turno Matutino</h2>
-          
-          {!horaSeleccionada ? (
-            <div className="horarios-grid">
-              {horariosMatutinos.map(horario => (
-                <div 
-                  key={horario.id} 
-                  className="horario-card"
-                  onClick={() => setHoraSeleccionada(horario.id)}
-                >
-                  <h3>{horario.nombre}</h3>
-                  <p>{horario.hora}</p>
-                  <p>
-                    {[...new Set(clases.filter(c => c.horario === horario.hora).map(c => c.grupo))].length} 
-                    grupos
-                  </p>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="grupos-por-hora">
+      <div className="todas-clases-container">
+        <h2>Asistencia por Horario - Turno Matutino</h2>
+        
+        {!horaSeleccionada ? (
+          <div className="horarios-grid">
+            {horariosMatutinos.map(horario => (
+              <div 
+                key={horario.id} 
+                className="horario-card"
+                onClick={() => {
+                  setHoraSeleccionada(horario.id);
+                  setPaginaActual(0); // Resetear a primer grado al seleccionar horario
+                }}
+              >
+                <h3>{horario.nombre}</h3>
+                <p>{horario.hora}</p>
+                <p>
+                  {[...new Set(clases.filter(c => c.horario === horario.hora && c.turno === 'matutino').map(c => c.grupo))].length} 
+                  grupos
+                </p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grupos-por-hora">
+            <div className="controles-superiores">
               <button className="btn-volver-horarios" onClick={() => setHoraSeleccionada(null)}>
                 ← Volver a horarios
               </button>
               
-              <h3>
-                {horariosMatutinos.find(h => h.id === horaSeleccionada).nombre} - 
-                {horariosMatutinos.find(h => h.id === horaSeleccionada).hora}
+              <h3 className="hora-seleccionada-titulo">
+                {horariosMatutinos.find(h => h.id === horaSeleccionada)?.nombre || 'Horario'} - 
+                {horariosMatutinos.find(h => h.id === horaSeleccionada)?.hora || ''}
               </h3>
-              
-              <div className="grupos-grid">
-                {obtenerGruposPorHorario(horaSeleccionada).map(grupo => (
-                  <div key={grupo.id} className="grupo-card">
-                    <h4>{grupo.nombre}</h4>
-                    
-                    <div className="grupo-stats">
-                      <div className="stat-item">
-                        <span className="stat-label">Total:</span>
-                        <span className="stat-value">{grupo.estadisticas.totalAlumnos}</span>
-                      </div>
-                      <div className="stat-item">
-                        <span className="stat-label">Presentes:</span>
-                        <span className="stat-value" style={{color: COLORS.presente}}>
-                          {grupo.estadisticas.presentes}
-                        </span>
-                      </div>
-                      <div className="stat-item">
-                        <span className="stat-label">Justificantes:</span>
-                        <span className="stat-value" style={{color: COLORS.justificante}}>
-                          {grupo.estadisticas.justificantes}
-                        </span>
-                      </div>
-                      <div className="stat-item">
-                        <span className="stat-label">Ausentes:</span>
-                        <span className="stat-value" style={{color: COLORS.ausente}}>
-                          {grupo.estadisticas.ausentes}
-                        </span>
-                      </div>
-                      <div className="stat-item">
-                        <span className="stat-label">Asistencia:</span>
-                        <span className="stat-value">
-                          {grupo.estadisticas.porcentajeAsistencia}%
-                        </span>
-                      </div>
-                    </div>
-                    
-                    <div className="grupo-chart">
-                      <ResponsiveContainer width="100%" height={150}>
-                        <PieChart>
-                          <Pie
-                            data={[
-                              { name: 'Presentes', value: grupo.estadisticas.presentes, color: COLORS.presente },
-                              { name: 'Justificantes', value: grupo.estadisticas.justificantes, color: COLORS.justificante },
-                              { name: 'Ausentes', value: grupo.estadisticas.ausentes, color: COLORS.ausente },
-                            ]}
-                            cx="50%"
-                            cy="50%"
-                            innerRadius={40}
-                            outerRadius={60}
-                            paddingAngle={2}
-                            dataKey="value"
-                            label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                          >
-                            <Cell key="presente" fill={COLORS.presente} />
-                            <Cell key="justificante" fill={COLORS.justificante} />
-                            <Cell key="ausente" fill={COLORS.ausente} />
-                          </Pie>
-                          <Tooltip />
-                        </PieChart>
-                      </ResponsiveContainer>
-                    </div>
-                    
-                    <div className="grupo-clases">
-                      <h5>Clases en este horario:</h5>
-                      <ul>
-                        {grupo.clases.map(clase => (
-                          <li key={clase.id}>
-                            {clase.nombre} - {clase.alumnos.length} alumnos
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
-          )}
-        </div>
+
+            {/* Controles de paginación por grado */}
+            <div className="paginacion-grados">
+              {grados.map((grado, index) => (
+                <button
+                  key={`grado-${grado}`}
+                  className={`paginacion-btn ${paginaActual === index ? 'activo' : ''}`}
+                  onClick={() => setPaginaActual(index)}
+                >
+                  {grado}° Año
+                </button>
+              ))}
+            </div>
+
+            {/* Contenido del grado actual */}
+            <div className="contenido-grado">
+              <h4 className="grado-titulo">{gradoActual}° Año</h4>
+              
+              {obtenerGruposPorHorario(horaSeleccionada)
+                .filter(grupo => grupo.id.startsWith(gradoActual))
+                .length === 0 ? (
+                <p className="sin-datos">No hay grupos registrados para este grado en el horario seleccionado</p>
+              ) : (
+                <div className="grupos-grid">
+                  {obtenerGruposPorHorario(horaSeleccionada)
+                    .filter(grupo => grupo.id.startsWith(gradoActual))
+                    .map(grupo => (
+                      <GrupoCard 
+                        key={grupo.id} 
+                        grupo={grupo} 
+                        onVerClases={() => setGrupoSeleccionado(grupo.id)}
+                      />
+                    ))}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
       </div>
-    );
-  }
+    </div>
+
+  );
+}
+
 
   const asientos = generarAsientos(claseActual.alumnos.length);
   const alumnoSeleccionado = asientoSeleccionado ? claseActual.alumnos.find(a => a.id === asientoSeleccionado) : null;
