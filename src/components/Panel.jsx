@@ -9,7 +9,8 @@ import {
   PieChart,
   Pie,
   Cell,
-  Legend
+  Legend,
+  LabelList
 } from "recharts";
 import * as XLSX from "xlsx";
 import "./Panel.css";
@@ -470,61 +471,75 @@ const Panel = () => {
 
   return (
     <div className="grupo-card">
-      <div className="grupo-header">
-        <h4>{grupo.nombre}</h4>
-        <span className={`asistencia-porcentaje ${
-          grupo.estadisticas.porcentajeAsistencia >= 90 ? 'alta' :
-          grupo.estadisticas.porcentajeAsistencia >= 70 ? 'media' : 'baja'
-        }`}>
-          {grupo.estadisticas.porcentajeAsistencia}%
+    <div className="grupo-header">
+      <h4>{grupo.nombre}</h4>
+      <div className="porcentajes-container">
+        <span className="porcentaje porcentaje-presente">
+          {Math.round((grupo.estadisticas.presentes / grupo.estadisticas.totalAlumnos) * 100)}%
+        </span>
+        <span className="porcentaje porcentaje-justificante">
+          {Math.round((grupo.estadisticas.justificantes / grupo.estadisticas.totalAlumnos) * 100)}%
+        </span>
+        <span className="porcentaje porcentaje-ausente">
+          {Math.round((grupo.estadisticas.ausentes / grupo.estadisticas.totalAlumnos) * 100)}%
         </span>
       </div>
-      
-      <div className="grupo-stats-container">
-        <div className="grupo-stats">
-          <div className="stat-item">
-            <span className="stat-label">Total:</span>
-            <span className="stat-value">{grupo.estadisticas.totalAlumnos}</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-dot presente"></span>
-            <span className="stat-value">{grupo.estadisticas.presentes}</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-dot justificante"></span>
-            <span className="stat-value">{grupo.estadisticas.justificantes}</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-dot ausente"></span>
-            <span className="stat-value">{grupo.estadisticas.ausentes}</span>
-          </div>
+    </div>
+
+    <div className="grupo-stats-container">
+      <div className="grupo-stats">
+        <div className="stat-item">
+          <span className="stat-label">Total:</span>
+          <span className="stat-value">{grupo.estadisticas.totalAlumnos}</span>
         </div>
-        
-        <div className="grupo-chart-mini">
-          <ResponsiveContainer width={100} height={100}>
-            <PieChart>
-              <Pie
-                data={[
-                  { name: 'Presentes', value: grupo.estadisticas.presentes },
-                  { name: 'Justificantes', value: grupo.estadisticas.justificantes },
-                  { name: 'Ausentes', value: grupo.estadisticas.ausentes },
-                ]}
-                cx="50%"
-                cy="50%"
-                innerRadius={30}
-                outerRadius={45}
-                paddingAngle={2}
-                dataKey="value"
-              >
-                <Cell fill="#4CAF50" />
-                <Cell fill="#FFC107" />
-                <Cell fill="#F44336" />
-              </Pie>
-              <Tooltip formatter={(value, name) => [`${value} ${name}`, '']} />
-            </PieChart>
-          </ResponsiveContainer>
+        <div className="stat-item">
+          <span className="stat-dot presente"></span>
+          <span className="stat-value">{grupo.estadisticas.presentes}</span>
+        </div>
+        <div className="stat-item">
+          <span className="stat-dot justificante"></span>
+          <span className="stat-value">{grupo.estadisticas.justificantes}</span>
+        </div>
+        <div className="stat-item">
+          <span className="stat-dot ausente"></span>
+          <span className="stat-value">{grupo.estadisticas.ausentes}</span>
         </div>
       </div>
+      
+      <div className="grupo-chart-mini">
+        <ResponsiveContainer width={100} height={100}>
+          <BarChart
+            data={[
+              { 
+                name: 'Estadísticas',
+                presentes: grupo.estadisticas.presentes,
+                justificantes: grupo.estadisticas.justificantes,
+                ausentes: grupo.estadisticas.ausentes,
+                total: grupo.estadisticas.totalAlumnos
+              }
+            ]}
+            layout="vertical"
+            margin={{ top: 5, right: 5, left: 5, bottom: 5 }}
+          >
+            <XAxis type="number" hide domain={[0, 'dataMax']} />
+            <YAxis type="category" dataKey="name" hide />
+            <Tooltip 
+              formatter={(value, name) => {
+                const names = {
+                  presentes: 'Presentes',
+                  justificantes: 'Justificantes',
+                  ausentes: 'Ausentes'
+                };
+                return [`${value} ${names[name]}`, ''];
+              }}
+            />
+            <Bar dataKey="presentes" fill="#4CAF50" barSize={20} />
+            <Bar dataKey="justificantes" fill="#FFC107" barSize={20} />
+            <Bar dataKey="ausentes" fill="#F44336" barSize={20} />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
       
       <button 
         className="btn-ver-clases"
@@ -587,29 +602,50 @@ if (mostrarTodasClases) {
           </div>
         </div>
 
-      <div className="todas-clases-container">
-        <h2>Asistencia por Horario - Turno Matutino</h2>
-        
-        {!horaSeleccionada ? (
-          <div className="horarios-grid">
-            {horariosMatutinos.map(horario => (
-              <div 
-                key={horario.id} 
-                className="horario-card"
-                onClick={() => {
-                  setHoraSeleccionada(horario.id);
-                  setPaginaActual(0); // Resetear a primer grado al seleccionar horario
-                }}
-              >
-                <h3>{horario.nombre}</h3>
-                <p>{horario.hora}</p>
-                <p>
-                  {[...new Set(clases.filter(c => c.horario === horario.hora && c.turno === 'matutino').map(c => c.grupo))].length} 
-                  grupos
-                </p>
-              </div>
-            ))}
+<div className="todas-clases-container">
+  <h2>Asistencia por Horario - Turno Matutino</h2>
+
+  {!horaSeleccionada ? (
+    <>
+      <div className="horarios-grid">
+        {horariosMatutinos.map(horario => (
+          <div 
+            key={horario.id} 
+            className="horario-card"
+            onClick={() => {
+              setHoraSeleccionada(horario.id);
+              setPaginaActual(0); // Resetear a primer grado al seleccionar horario
+            }}
+          >
+            <h3>{horario.nombre}</h3>
+            <p>{horario.hora}</p>
+            <p>
+              {
+                [...new Set(
+                  clases.filter(c => c.horario === horario.hora && c.turno === 'matutino')
+                        .map(c => c.grupo)
+                )].length
+              } grupos
+            </p>
           </div>
+        ))}
+      </div>
+
+      {/* Turno vespertino: solo visual */}
+      <h2 className="turno-vespertino-titulo">Asistencia por Horario - Turno Vespertino</h2>
+      <div className="horarios-grid vespertino-visual">
+        {horariosMatutinos.map(horario => (
+          <div 
+            key={`vespertino-${horario.id}`} 
+            className="horario-card deshabilitado"
+          >
+            <h3>{horario.nombre}</h3>
+            <p>{horario.hora}</p>
+            <p>0 grupos</p>
+          </div>
+        ))}
+      </div>
+    </>
         ) : (
           <div className="grupos-por-hora">
             <div className="controles-superiores">

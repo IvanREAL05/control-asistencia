@@ -662,6 +662,35 @@ h2, h3 {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
+  width: 100%;
+}
+
+
+.porcentajes-container {
+  display: flex;
+  gap: 8px;
+}
+
+.porcentaje {
+  font-weight: bold;
+  font-size: 14px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.porcentaje-presente {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.porcentaje-justificante {
+  background-color: #FFC107;
+  color: black;
+}
+
+.porcentaje-ausente {
+  background-color: #F44336;
+  color: white;
 }
 
 .grupo-header h4 {
@@ -670,27 +699,6 @@ h2, h3 {
   color: #2c3e50;
 }
 
-.asistencia-porcentaje {
-  font-weight: bold;
-  font-size: 1.1rem;
-  padding: 0.3rem 0.6rem;
-  border-radius: 4px;
-}
-
-.asistencia-porcentaje.alta {
-  color: #4CAF50;
-  background-color: #E8F5E9;
-}
-
-.asistencia-porcentaje.media {
-  color: #FFC107;
-  background-color: #FFF8E1;
-}
-
-.asistencia-porcentaje.baja {
-  color: #F44336;
-  background-color: #FFEBEE;
-}
 
 .grupo-stats-container {
   display: flex;
@@ -723,7 +731,6 @@ h2, h3 {
 .stat-dot {
   width: 12px;
   height: 12px;
-  border-radius: 50%;
   display: inline-block;
 }
 
@@ -869,4 +876,36 @@ h2, h3 {
   margin-top: 1rem;
   padding-top: 1rem;
   border-top: 1px solid #eee;
+}
+
+
+/* Turno vespertino título */
+.turno-vespertino-titulo {
+  margin-top: 40px;
+  color: #336699;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #335577;
+}
+
+/* Grid de vespertino (hereda base del grid normal) */
+.vespertino-visual .horario-card {
+  background-color: #e6f0fa; /* fondo más claro */
+  border-left: 5px solid #336699; /* azul intermedio */
+  cursor: default;
+  transition: none;
+}
+
+.vespertino-visual .horario-card h3 {
+  color: #336699;
+}
+
+.vespertino-visual .horario-card p {
+  color: #444;
+}
+
+/* Para deshabilitado visual (sin hover ni clic) */
+.horario-card.deshabilitado {
+  pointer-events: none;
+  opacity: 0.8;
+  box-shadow: none;
 }
