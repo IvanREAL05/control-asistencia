@@ -658,11 +658,29 @@ h2, h3 {
 }
 
 .grupo-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-  width: 100%;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.grupo-header h4 {
+  color: white;
+  margin: 0;
+}
+/* Estilos diferenciados para cada grado */
+.grupo-1 {
+  background-color: #60A5FA; /* Azul claro */
+}
+
+.grupo-2 {
+  background-color: #2563EB; /* Azul medio */
+}
+
+.grupo-3 {
+  background-color: #1E3A8A; /* Azul muy oscuro */
 }
 
 
@@ -693,11 +711,7 @@ h2, h3 {
   color: white;
 }
 
-.grupo-header h4 {
-  margin: 0;
-  font-size: 1.1rem;
-  color: #2c3e50;
-}
+
 
 
 .grupo-stats-container {

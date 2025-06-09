@@ -471,20 +471,20 @@ const Panel = () => {
 
   return (
     <div className="grupo-card">
-    <div className="grupo-header">
-      <h4>{grupo.nombre}</h4>
-      <div className="porcentajes-container">
-        <span className="porcentaje porcentaje-presente">
-          {Math.round((grupo.estadisticas.presentes / grupo.estadisticas.totalAlumnos) * 100)}%
-        </span>
-        <span className="porcentaje porcentaje-justificante">
-          {Math.round((grupo.estadisticas.justificantes / grupo.estadisticas.totalAlumnos) * 100)}%
-        </span>
-        <span className="porcentaje porcentaje-ausente">
-          {Math.round((grupo.estadisticas.ausentes / grupo.estadisticas.totalAlumnos) * 100)}%
-        </span>
+      <div className={`grupo-header grupo-${grupo.nombre.charAt(0)}`}>
+        <h4>{grupo.nombre}</h4>
+        <div className="porcentajes-container">
+          <span className="porcentaje porcentaje-presente">
+            {Math.round((grupo.estadisticas.presentes / grupo.estadisticas.totalAlumnos) * 100)}%
+          </span>
+          <span className="porcentaje porcentaje-justificante">
+            {Math.round((grupo.estadisticas.justificantes / grupo.estadisticas.totalAlumnos) * 100)}%
+          </span>
+          <span className="porcentaje porcentaje-ausente">
+            {Math.round((grupo.estadisticas.ausentes / grupo.estadisticas.totalAlumnos) * 100)}%
+          </span>
+        </div>
       </div>
-    </div>
 
     <div className="grupo-stats-container">
       <div className="grupo-stats">
