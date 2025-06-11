@@ -14,6 +14,7 @@ import {
 } from "recharts";
 import * as XLSX from "xlsx";
 import "./Panel.css";
+import ListaEstudiantes from './ListaEstudiante';
 
 // Datos de grupos
 const grupos = [
@@ -602,7 +603,7 @@ if (mostrarTodasClases) {
           </div>
         </div>
 
-<div className="todas-clases-container">
+  <div className="todas-clases-container">
   <h2>Asistencia por Horario - Turno Matutino</h2>
 
   {!horaSeleccionada ? (
@@ -935,6 +936,16 @@ if (mostrarTodasClases) {
             </div>
           )}
         </div>
+      </div>
+
+      <div className="panel-contenedor">
+        <h1>Panel de Control</h1>
+
+        {/* Otras secciones de tu panel */}
+        
+        <ListaEstudiantes />
+
+        {/* Más secciones si hay */}
       </div>
 
       {alumnoModal && (
