@@ -3,18 +3,34 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const [usuarioLogin, setUsuarioLogin] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    setError("");
 
-    if (email === "admin" && password === "1234") {
+    try {
+      const response = await fetch("http://localhost:3001/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ usuario_login: usuarioLogin, contrasena: password }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.message || "Credenciales incorrectas");
+        return;
+      }
+
+      const data = await response.json();
+      console.log(data); // Por ejemplo: { message: 'Login exitoso', usuario: { id: 1, rol: 'admin' } }
       navigate("/panel");
-    } else {
-      setError("Credenciales incorrectas");
+
+    } catch (error) {
+      setError("Error en el servidor. Intenta más tarde.");
     }
   };
 
@@ -25,9 +41,10 @@ const Login = () => {
 
         <input
           type="text"
-          placeholder="Correo electrónico"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Usuario"
+          value={usuarioLogin}
+          onChange={(e) => setUsuarioLogin(e.target.value)}
+          required
         />
 
         <input
@@ -35,6 +52,7 @@ const Login = () => {
           placeholder="Contraseña"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
 
         {error && <p className="error-message">{error}</p>}

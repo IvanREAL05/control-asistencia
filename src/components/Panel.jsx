@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   BarChart,
   Bar,
@@ -339,6 +340,11 @@ const Panel = () => {
   const [fechaHoraActual, setFechaHoraActual] = useState(new Date());
   const [mostrarTodasClases, setMostrarTodasClases] = useState(false);
   const [horaSeleccionada, setHoraSeleccionada] = useState(null);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+  navigate("/");
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -760,9 +766,9 @@ if (mostrarTodasClases) {
             <p>{horaFormateada}</p>
           </div>
           <p>Bienvenido</p>
-          <button className="btn-salir" onClick={() => alert("Sesión cerrada")}>
-            Cerrar sesión
-          </button>
+            <button className="btn-salir" onClick={handleLogout}>
+              Cerrar sesión
+            </button>
         </div>
       </div>
 
